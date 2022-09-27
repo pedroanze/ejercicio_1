@@ -17,6 +17,13 @@ class Mdl_bienvenida extends CI_MODEL
         $this->db->insert('persona',$campos);     
     }
 
+    function obtener_persona_all()
+    {
+        $consulta="Select * from persona;";
+        $resultado= $this->db->query($consulta);
+        return $resultado->result_array();
+    }
+
 
 
 

@@ -42,4 +42,9 @@ class Ctrl_bienvenida extends CI_Controller {
 		$parametros['capellidom']=$apellidom;
 		$this->Mdl_bienvenida->insertar_persona($parametros);
 	}
+
+	public function obtener_todas_las_personas()
+	{
+		echo json_encode($this->Mdl_bienvenida->obtener_persona_all());		
+	}
 }
