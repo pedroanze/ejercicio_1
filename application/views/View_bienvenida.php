@@ -32,7 +32,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="container" id="tabla_personas">
+  
 </div>
+
 
 
 <script type="text/javascript">
@@ -51,6 +53,39 @@ function guardar(){
     },
     success: function(){
       limpiar_campos();
+    },
+
+});
+
+}
+
+function guardar_cambios($id){
+  $.ajax({
+    method:"POST",
+    url:"<?php echo site_url("Ctrl_bienvenida/guardar_cambio");?>",
+    data:{
+      vid: $id,
+      vnombre :$("#txb_nombre").val(),
+      vapellidop :$("#txb_apellidoP").val(),
+      vapellidom :$("#txb_apellidoM").val()
+    },
+    success: function(){
+      listar_personas();
+    },
+
+});
+
+}
+
+function eliminar($id){
+  $.ajax({
+    method:"POST",
+    url:"<?php echo site_url("Ctrl_bienvenida/eliminar");?>",
+    data:{
+      vid :$id
+    },
+    success: function(){
+      listar_personas();
     },
 
 });
@@ -78,6 +113,29 @@ function listar_personas(){
 
 }
 
+function buscar_personas($id){
+  $.ajax({
+    method:"POST",
+    url:"<?php echo site_url("Ctrl_bienvenida/obtener_persona");?>",
+    data:{
+      vid :$id
+    },
+    success: function(persona){
+      llenar_campos(persona);
+    },
+    dataType:'json'
+});
+
+}
+
+function llenar_campos(persona){
+
+  $("#txb_nombre").val(persona[0].nombres);
+  $("#txb_apellidoP").val(persona[0].apellidop);
+  $("#txb_apellidoM").val(persona[0].apellidom);
+
+}
+
 
 function crear_tabla_personas(personas){
     if(personas.length >0)
@@ -101,6 +159,7 @@ function crear_tabla_personas(personas){
         tabla_dinamica+="<td>"+personas[i].nombres;+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidop;+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidom;+"</td>";
+        tabla_dinamica+="<td><div class='container'><div class='btn-group-vertical'><button type='button' class='btn btn-danger' onclick='eliminar("+personas[i].id+")'>Eliminar</button><button type='button' class='btn btn-warning' onclick='buscar_personas("+personas[i].id+")'>Editar</button><button type='button' class='btn btn-success' onclick='guardar_cambios("+personas[i].id+")'>Guardar Cambios</button></div></div></td>";
         tabla_dinamica+="</tr>";
       }
       tabla_dinamica+="</tbody>";

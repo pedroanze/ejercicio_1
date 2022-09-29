@@ -43,8 +43,37 @@ class Ctrl_bienvenida extends CI_Controller {
 		$this->Mdl_bienvenida->insertar_persona($parametros);
 	}
 
+	public function guardar_cambio()
+	{
+		$id=$this->input->post('vid');
+		$nombre=$this->input->post('vnombre');
+		$apellidop=$this->input->post('vapellidop');
+		$apellidom=$this->input->post('vapellidom');
+
+		$parametros['cid']=$id;
+		$parametros['cnombre']=$nombre;
+		$parametros['capellidop']=$apellidop;
+		$parametros['capellidom']=$apellidom;
+		$this->Mdl_bienvenida->modificar_registro($parametros);
+	}
+
+	public function eliminar()
+	{
+		$id=$this->input->post('vid');
+
+		$this->Mdl_bienvenida->borrar_persona(intval($id));
+	}
+
 	public function obtener_todas_las_personas()
 	{
 		echo json_encode($this->Mdl_bienvenida->obtener_persona_all());		
+	}
+
+	
+
+	public function obtener_persona()
+	{
+		$id=$this->input->post('vid');
+		echo json_encode($this->Mdl_bienvenida->buscar_persona(intval($id)));		
 	}
 }
