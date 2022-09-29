@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <input type="text" class="form-control" id="txb_apellidoM">
     </div>
     <button class="btn btn-outline-success btn-lg" onclick="guardar()">Guardar</button>
+    <input type="text" class="form-control" id = "myInput" placeholder = "buscar">
   </form>
 </div>
 
@@ -77,6 +78,7 @@ function listar_personas(){
 
 }
 
+
 function crear_tabla_personas(personas){
     if(personas.length >0)
     {
@@ -85,24 +87,28 @@ function crear_tabla_personas(personas){
       tabla_dinamica+="";
       
       tabla_dinamica+="<tr>";
-      tabla_dinamica+="<th>Id</th>";
       tabla_dinamica+="<th>Nombres</th>";
       tabla_dinamica+="<th>Apellido paterno</th>";
       tabla_dinamica+="<th>Apellido materno</th>";
       tabla_dinamica+="</tr>";
+      tabla_dinamica+="<tbody id='myTable'>";
+      
       
       var i;
       for(i=0;i<personas.length;i++)
       {
         tabla_dinamica+="<tr>";
-        tabla_dinamica+="<td>"+personas[i].id;+"</td>";
         tabla_dinamica+="<td>"+personas[i].nombres;+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidop;+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidom;+"</td>";
         tabla_dinamica+="</tr>";
       }
+      tabla_dinamica+="</tbody>";
       tabla_dinamica+="</table>";
+      
+      
       $("#tabla_personas").html(tabla_dinamica);
+      
       
     }
     else
@@ -112,13 +118,15 @@ function crear_tabla_personas(personas){
 }
 
 
-
-
-
-
-
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 </script>
-
 </body>
 
 
