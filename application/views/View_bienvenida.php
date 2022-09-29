@@ -116,8 +116,6 @@ function crear_tabla_personas(personas){
         $("#tabla_personas").html('<div class="alert alert-info"><strong> No hay datos que mostrar<strong></div>');
     }
 }
-
-
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
