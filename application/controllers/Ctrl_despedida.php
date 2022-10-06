@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ctrl_bienvenida extends CI_Controller {
+class Ctrl_despedida extends CI_Controller {
 
 	/**
-	 * Index Page for this controller.
+	 * Index Page for this controller.s
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
@@ -28,9 +28,9 @@ class Ctrl_bienvenida extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('View_head');
-		$this->load->view('View_bienvenida');
-		$this->load->view('View_footer');
+        $this->load->view('View_head');
+		$this->load->view('View_despedida');
+
 	}
 	
 	public function guardar()
