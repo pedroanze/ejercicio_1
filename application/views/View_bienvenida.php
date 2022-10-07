@@ -1,4 +1,5 @@
 <div class="container">
+<input type="hidden" class="form-control" id="txb_id">
 <form class= "form-container">
     <div class="form-group">
       <label for="txb_nombre">Nombre:</label>
@@ -13,8 +14,9 @@
       <input type="text" class="form-control" id="txb_apellidoM">
     </div>
     <div class= "container-guardar-buscar">
-    <button class="button-guardar" onclick="guardar()">Guardar</button>
-    </div>
+    <button class="button-guardar button-guardar-secundary" onclick="guardar()">Guardar</button>
+    
+  </div>
     <div>
     <section class="main-input">
       <div class="main-input-container"> 

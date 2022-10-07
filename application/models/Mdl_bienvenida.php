@@ -14,14 +14,38 @@ class Mdl_bienvenida extends CI_MODEL
             'apellidop'=> $parametros['capellidop'],
             'apellidom'=> $parametros['capellidom']
         );
+        echo $parametros['cnombre'];
         $this->db->insert('persona',$campos);     
     }
 
-    function modificar_registro($parametros)
+    function modificar_persona($parametros)
     {
-        $consulta="Update persona set nombres='".$parametros['cnombre']."', apellidop='".$parametros['capellidop']."', apellidom='".$parametros['capellidom']."' where id='".$parametros['cid']."';";
-        $this->db->query($consulta);
+        $id =$parametros['cid'];
+        $campos= array(
+            'nombres'=> $parametros['cnombre'],
+            'apellidop'=> $parametros['capellidop'],
+            'apellidom'=> $parametros['capellidom']
+        );
+        
+        
+        
+    $this->db->where('id', $id);
+
+    $this->db->update('persona', $campos);
+
+
+
+
+
     }
+
+
+    // function obtener_persona_by($parametros)
+    // {
+    //     $consulta="Select * from persona where nombres like '%" .$parametros['cnombre']."%' ;";
+    //     $resultado= $this->db->query($consulta);
+    //     return $resultado->result_array();
+    // }
 
     function obtener_persona_all()
     {
@@ -30,15 +54,15 @@ class Mdl_bienvenida extends CI_MODEL
         return $resultado->result_array();
     }
 
-    function buscar_persona($id)
+
+    function eliminar_persona($id)
     {
-        $consulta="Select * from persona where id='".$id."';";
-        $resultado= $this->db->query($consulta);
-        return $resultado->result_array();
+        
+        $consulta="Delete from persona where id= '".$id."';" ;
+        $this->db->query($consulta);
+        
     }
 
-    function borrar_persona($id){
-        $this->db->delete('persona',array('id'=>$id));      
-    }
+
 
 }

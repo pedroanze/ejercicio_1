@@ -24,8 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin: 40px 0px;
         }
 
-        .button-guardar{
-        margin-bottom: 30px;
+        .button-guardar-secundary{
+        
+        margin: 30px 0;
+        width: 400px;
+        height: 50px;
+        font-size:20px;
+
         }
         .main-input{
         margin-top:20px;
@@ -34,8 +39,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         margin-bottom: 35px;
         }
         .container-guardar-buscar{
-        display:flex;
+        display:grid;
         align-items:center;
+        justify-content: center;
+        
         }
 
         .main-input-container{
@@ -81,12 +88,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         border-radius: 5px ;
         padding: 0 15px;
         margin-right: 15px;
+        border: 1px solid #f2f2f2;
         }
         button:hover{
+
         border: 1px solid #c6c6c6;
         box-shadow: 0 1px black;
         color: #222
         }
+
+        .nav-link{
+          color: black;
+          border: 1px solid white;
+          margin-left: 8px;
+          border-radius: 6px;
+        }
+        .nav-link:hover{
+          color: #5f6368;
+          border: 1px solid #c6c6c6;
+          
     </style>
 </head>
 
@@ -96,13 +116,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>">hola</a>
+      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>" >Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_despedida/index");?>">chau</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
+      <a class="nav-link" href="<?php echo site_url("Ctrl_despedida/index");?>">Despedida</a>
     </li>
   </ul>
 
