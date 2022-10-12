@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         .button-guardar-secundary{
         
-        margin: 30px 0;
+        margin-bottom: 30px;
         width: 400px;
         height: 50px;
         font-size:20px;
@@ -65,9 +65,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         border-color: #dfe1e500;
         }
 
-        .main-input .search-icon{
-        width: 18px;
-        height: 18px;
+        .search-icon{
+        width: 1px;
+        height: 1px;
         }
 
         /* botones modificar */

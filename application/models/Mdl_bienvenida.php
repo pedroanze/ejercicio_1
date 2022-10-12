@@ -1,5 +1,5 @@
 <?php
-
+ 
 class Mdl_bienvenida extends CI_MODEL
 {
     function __construct()
@@ -27,25 +27,12 @@ class Mdl_bienvenida extends CI_MODEL
             'apellidom'=> $parametros['capellidom']
         );
         
-        
-        
     $this->db->where('id', $id);
 
     $this->db->update('persona', $campos);
 
-
-
-
-
     }
 
-
-    // function obtener_persona_by($parametros)
-    // {
-    //     $consulta="Select * from persona where nombres like '%" .$parametros['cnombre']."%' ;";
-    //     $resultado= $this->db->query($consulta);
-    //     return $resultado->result_array();
-    // }
 
     function obtener_persona_all()
     {
@@ -54,6 +41,16 @@ class Mdl_bienvenida extends CI_MODEL
         return $resultado->result_array();
     }
 
+    function obtener_persona_by($parametros)
+    {
+
+        $consulta="Select * from persona where 
+                    nombres like '%" .$parametros['cnombre']."%' and 
+                    apellidop like '%" .$parametros['capellidop']."%' and
+                    apellidom like '%" .$parametros['capellidom']."%';";
+        $resultado= $this->db->query($consulta);
+        return $resultado->result_array();
+    }
 
     function eliminar_persona($id)
     {

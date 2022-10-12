@@ -1,24 +1,6 @@
 <script type="text/javascript">
 listar_personas();
 
-// function guardar(){
-  
-//     $.ajax({
-//     method:"POST",
-//     url:"<?php echo site_url("Ctrl_bienvenida/guardar");?>",
-//     data:{
-//       vnombre :$("#txb_nombre").val(),
-//       vapellidop :$("#txb_apellidoP").val(),
-//       vapellidom :$("#txb_apellidoM").val()
-//     },
-//     success: function(){
-//       limpiar_campos();
-//     },
-
-// });
-
-// }
-
 function guardar(){
   if($("#txb_id").val()==""){
     $.ajax({
@@ -55,24 +37,6 @@ function guardar(){
 
 }
 
-//function modificar(){
-//   $.ajax({
-//     method:"POST",
-//     url:"<?php echo site_url("Ctrl_bienvenida/modificar");?>",
-//     data:{
-//       vid :$("#txb_id").val(),
-//       vnombre :$("#txb_nombre").val(),
-//       vapellidop :$("#txb_apellidoP").val(),
-//       vapellidom :$("#txb_apellidoM").val()
-//     },
-//     success: function(){
-//       limpiar_campos();
-//       listar_personas();
-//     },
-
-// });
-
-//}
 
 
 function limpiar_campos(){
@@ -91,28 +55,13 @@ function editar(id,nombre,apellidop,apellidom){
   $("#txb_apellidoM").val(apellidom);
 }
 
-// function listar_personas_by(){
-//   $.ajax({
-//     method:"POST",
-//     url:"<?php echo site_url("Ctrl_bienvenida/obtener_personas_by");?>",
-//     data:{
-//       vnombre :$("#txb_nombre").val(),
-//       vapellidop :$("#txb_apellidoP").val(),
-//       vapellidom :$("#txb_apellidoM").val()
-//     },
-//     success: function(personas){
-//       crear_tabla_personas(personas);
-//     },
-//     dataType:'json'
-// });
-
-// }
 
 function listar_personas(){
   $.ajax({
     method:"POST",
     url:"<?php echo site_url("Ctrl_bienvenida/obtener_todas_las_personas");?>",
     data:{
+      
     },
     success: function(personas){
       crear_tabla_personas(personas);
@@ -121,6 +70,24 @@ function listar_personas(){
 });
 
 }
+
+function listar_personas_by(){
+  $.ajax({
+    method:"POST",
+    url:"<?php echo site_url("Ctrl_bienvenida/obtener_personas_by");?>",
+    data:{
+      vnombre :$("#txb_nombre").val(),
+      vapellidop :$("#txb_apellidoP").val(),
+      vapellidom :$("#txb_apellidoM").val()
+    },
+    success: function(personas){
+      crear_tabla_personas(personas);
+    },
+    dataType:'json'
+});
+
+}
+
 
 function crear_tabla_personas(personas){
     if(personas.length >0)
@@ -136,6 +103,7 @@ function crear_tabla_personas(personas){
       tabla_dinamica+="<th>Apellido materno</th>";
       tabla_dinamica+="<th>Acciones</th>";
       tabla_dinamica+="</tr>";
+      tabla_dinamica+="<tbody id='myTable'>";
       
       var i;
       for(i=0;i<personas.length;i++)
@@ -151,6 +119,7 @@ function crear_tabla_personas(personas){
         tabla_dinamica+="</td>";
         tabla_dinamica+="</tr>";
       }
+      tabla_dinamica+="</tbody>";
       tabla_dinamica+="</table>";
       $("#tabla_personas").html(tabla_dinamica);
       
@@ -177,6 +146,16 @@ function eliminar(id){
 });
 
 }
+//funcion busqueda sin sql
+
+// $(document).ready(function(){
+//   $("#myInput").on("keyup", function() {
+//     var value = $(this).val().toLowerCase();
+//     $("#myTable tr").filter(function() {
+//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//     });
+//   });
+// });
 
 
 

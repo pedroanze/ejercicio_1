@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ctrl_bienvenida extends CI_Controller {
 
-	/**
+	/** 
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -84,17 +84,16 @@ class Ctrl_bienvenida extends CI_Controller {
 	{
 		echo json_encode($this->Mdl_bienvenida->obtener_persona_all());		
 	}
-	// public function obtener_personas_by()
-	// {
-	// 	$nombre=$this->input->post('vnombre');
-	// 	$apellidop=$this->input->post('vapellidop');
-	// 	$apellidom=$this->input->post('vapellidom');
 
-	// 	$parametros['cnombre']=$nombre;
-	// 	$parametros['capellidop']=$apellidop;
-	// 	$parametros['capellidom']=$apellidom;
+	public function obtener_personas_by(){
+		$nombre=$this->input->post('vnombre');
+		$apellidop=$this->input->post('vapellidop');
+		$apellidom=$this->input->post('vapellidom');
 
-
-	// 	echo json_encode($this->Mdl_bienvenida->obtener_persona_by($parametros));		
-	// }
+		$parametros['cnombre']=$nombre;
+		$parametros['capellidop']=$apellidop;
+		$parametros['capellidom']=$apellidom;
+		$this->Mdl_bienvenida->obtener_persona_by($parametros);
+		echo json_encode($this->Mdl_bienvenida->obtener_persona_by($parametros));
+	}
 }
