@@ -2,16 +2,16 @@
 <input type="hidden" class="form-control" id="txb_id">
 <form>
     <div class="form-group">
-      <label for="txb_nombre">Nombre:</label>
+      <label for="txb_nombre">Producto:</label>
       <input type="text" class="form-control" id="txb_nombre">
     </div>
     <div class="form-group">
-      <label for="txb_apellidoP">Apellido paterno:</label>
-      <input type="text" class="form-control" id="txb_apellidoP">
+      <label for="txb_apellidoP">Stock:</label>
+      <input type="number" class="form-control" id="txb_apellidoP">
     </div>
     <div class="form-group">
-      <label for="txb_apellidoM">Apellido materno:</label>
-      <input type="text" class="form-control" id="txb_apellidoM">
+      <label for="txb_apellidoM">Precio:</label>
+      <input type="number" class="form-control" id="txb_apellidoM">
     </div>
     <div class= "container-guardar-buscar">
       <button class="button-guardar-secundary" onclick="guardar()">Guardar <i class="fas fa-solid fa-floppy-disk"></i> </button>
