@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="<?php echo base_url();?>/css/styleViewBienvenida.css" type="text/css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
@@ -115,9 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_bienvenida/index");?>" >Home</a>
-    </li>
+
     <li class="nav-item">
       <a class="nav-link" href="<?php echo site_url("Ctrl_despedida/index");?>">Despedida</a>
     </li>

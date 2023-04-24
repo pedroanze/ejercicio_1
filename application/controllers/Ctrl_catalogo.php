@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ctrl_despedida extends CI_Controller {
+class Ctrl_catalogo extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.s
+	/** 
+	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
 	 * 		http://example.com/index.php/welcome
@@ -22,15 +22,16 @@ class Ctrl_despedida extends CI_Controller {
 	function __construct()
     {
         parent ::__construct();
-		$this->load->model('Mdl_bienvenida');
+		$this->load->model('Mdl_catalogo');
     }   	
 
 
 	public function index()
 	{
-        $this->load->view('View_head');
-		$this->load->view('View_despedida');
-
+		$this->load->view('View_head');
+		$this->load->view('View_catalogo');
+		$this->load->view('View_footer');
+		
 	}
 	
 	public function guardar()
@@ -42,40 +43,57 @@ class Ctrl_despedida extends CI_Controller {
 		$parametros['cnombre']=$nombre;
 		$parametros['capellidop']=$apellidop;
 		$parametros['capellidom']=$apellidom;
-		$this->Mdl_bienvenida->insertar_persona($parametros);
-	}
 
-	public function guardar_cambio()
+
+		
+
+
+		$this->Mdl_catalogo->insertar_persona($parametros);
+	}
+	public function modificar()
 	{
 		$id=$this->input->post('vid');
 		$nombre=$this->input->post('vnombre');
 		$apellidop=$this->input->post('vapellidop');
 		$apellidom=$this->input->post('vapellidom');
 
-		$parametros['cid']=$id;
+		$parametros['cid']=$id;	
 		$parametros['cnombre']=$nombre;
 		$parametros['capellidop']=$apellidop;
 		$parametros['capellidom']=$apellidom;
-		$this->Mdl_bienvenida->modificar_registro($parametros);
+
+
+		
+
+
+		$this->Mdl_catalogo->modificar_persona($parametros);
 	}
+
+
+
+
 
 	public function eliminar()
 	{
-		$id=$this->input->post('vid');
 
-		$this->Mdl_bienvenida->borrar_persona(intval($id));
+		$id=$this->input->post('vid');
+		$this->Mdl_catalogo->eliminar_persona($id);
 	}
 
 	public function obtener_todas_las_personas()
 	{
-		echo json_encode($this->Mdl_bienvenida->obtener_persona_all());		
+		echo json_encode($this->Mdl_catalogo->obtener_persona_all());		
 	}
 
-	
+	public function obtener_personas_by(){
+		$nombre=$this->input->post('vnombre');
+		$apellidop=$this->input->post('vapellidop');
+		$apellidom=$this->input->post('vapellidom');
 
-	public function obtener_persona()
-	{
-		$id=$this->input->post('vid');
-		echo json_encode($this->Mdl_bienvenida->buscar_persona(intval($id)));		
+		$parametros['cnombre']=$nombre;
+		$parametros['capellidop']=$apellidop;
+		$parametros['capellidom']=$apellidom;
+		$this->Mdl_catalogo->obtener_persona_by($parametros);
+		echo json_encode($this->Mdl_catalogo->obtener_persona_by($parametros));
 	}
 }

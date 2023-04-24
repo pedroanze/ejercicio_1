@@ -5,7 +5,7 @@ function guardar(){
   if($("#txb_id").val()==""){
     $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/guardar");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/guardar");?>",
     data:{
       vnombre :$("#txb_nombre").val(),
       vapellidop :$("#txb_apellidoP").val(),
@@ -19,7 +19,7 @@ function guardar(){
   }else{
     $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/modificar");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/modificar");?>",
     data:{
       vid :$("#txb_id").val(),
       vnombre :$("#txb_nombre").val(),
@@ -59,7 +59,7 @@ function editar(id,nombre,apellidop,apellidom){
 function listar_personas(){
   $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/obtener_todas_las_personas");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/obtener_todas_las_personas");?>",
     data:{
       
     },
@@ -74,7 +74,7 @@ function listar_personas(){
 function listar_personas_by(){
   $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/obtener_personas_by");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/obtener_personas_by");?>",
     data:{
       vnombre :$("#txb_nombre").val(),
       vapellidop :$("#txb_apellidoP").val(),
@@ -97,7 +97,7 @@ function crear_tabla_personas(personas){
       tabla_dinamica+="";
       
       tabla_dinamica+="<tr>";
-      
+      tabla_dinamica+="<th>Id</th>";
       tabla_dinamica+="<th>Nombres</th>";
       tabla_dinamica+="<th>Apellido paterno</th>";
       tabla_dinamica+="<th>Apellido materno</th>";
@@ -109,7 +109,7 @@ function crear_tabla_personas(personas){
       for(i=0;i<personas.length;i++)
       {
         tabla_dinamica+="<tr>";
-        
+        tabla_dinamica+="<td>"+personas[i].id;+"</td>";
         tabla_dinamica+="<td>"+personas[i].nombres+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidop+"</td>";
         tabla_dinamica+="<td>"+personas[i].apellidom+"</td>";
@@ -133,7 +133,7 @@ function crear_tabla_personas(personas){
 function eliminar(id){
   $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_bienvenida/eliminar");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/eliminar");?>",
     data:{
       vid :id
       
@@ -146,16 +146,16 @@ function eliminar(id){
 });
 
 }
-//funcion busqueda sin sql
 
-// $(document).ready(function(){
-//   $("#myInput").on("keyup", function() {
-//     var value = $(this).val().toLowerCase();
-//     $("#myTable tr").filter(function() {
-//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//     });
-//   });
-// });
+
+ $(document).ready(function(){
+   $("#myInput").on("keyup", function() {
+     var value = $(this).val().toLowerCase();
+     $("#myTable tr").filter(function() {
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+     });
+   });
+ });
 
 
 

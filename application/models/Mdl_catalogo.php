@@ -1,6 +1,6 @@
 <?php
  
-class Mdl_bienvenida extends CI_MODEL
+class Mdl_catalogo extends CI_MODEL
 {
     function __construct()
     {

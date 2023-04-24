@@ -17,9 +17,9 @@
       <button class="button-guardar-secundary" onclick="guardar()">Guardar <i class="fas fa-solid fa-floppy-disk"></i> </button>
     </div>
   </form>
-  <div class= "container-guardar-buscar">
-    <button class="button-guardar-secundary" onclick="listar_personas_by()">Buscar <i class="fas fa-search search-icon "></i></button>
-  </div>
+
+
+  <input type="text" class="form-control" id = "myInput" placeholder = "buscar">
 </div>
 
 
