@@ -7,7 +7,7 @@ function guardar(){
     method:"POST",
     url:"<?php echo site_url("Ctrl_catalogo/guardar");?>",
     data:{
-      vproducto :$("#txb_producto").val(),
+      vnombre_producto :$("#txb_nombre_producto").val(),
       vstock :$("#txb_stock").val(),
       vprecio :$("#txb_precio").val()
     },
@@ -22,7 +22,7 @@ function guardar(){
     url:"<?php echo site_url("Ctrl_catalogo/modificar");?>",
     data:{
       vid :$("#txb_id").val(),
-      vproducto :$("#txb_producto").val(),
+      vnombre_producto :$("#txb_nombre_producto").val(),
       vstock :$("#txb_stock").val(),
       vprecio :$("#txb_precio").val()
     },
@@ -40,7 +40,7 @@ function guardar(){
 
 
 function limpiar_campos(){
-  $("#txb_producto").val("");
+  $("#txb_nombre_producto").val("");
   $("#txb_stock").val("");
   $("#txb_precio").val("");
   $("#txb_id").val("");
@@ -48,9 +48,9 @@ function limpiar_campos(){
 }
 
 
-function editar(id,producto,stock,precio){
+function editar(id,nombre_producto,stock,precio){
   $("#txb_id").val(id);
-  $("#txb_producto").val(producto);
+  $("#txb_nombre_producto").val(nombre_producto);
   $("#txb_stock").val(stock);
   $("#txb_precio").val(precio);
 }
@@ -76,7 +76,7 @@ function listar_productos_by(){
     method:"POST",
     url:"<?php echo site_url("Ctrl_catalogo/obtener_productos_by");?>",
     data:{
-      vproducto :$("#txb_producto").val(),
+      vnombre_producto :$("#txb_nombre_producto").val(),
       vstock :$("#txb_stock").val(),
       vprecio :$("#txb_precio").val()
     },

@@ -10,11 +10,11 @@ class Mdl_catalogo extends CI_MODEL
     function insertar_producto($parametros)
     {
         $campos= array(
-            'producto'=> $parametros['cproducto'],
+            'nombre_producto'=> $parametros['cnombre_producto'],
             'stock'=> $parametros['cstock'],
             'precio'=> $parametros['cprecio']
         );
-        echo $parametros['cproducto'];
+        echo $parametros['cnombre_producto'];
         $this->db->insert('producto',$campos);     
     }
 
@@ -22,7 +22,7 @@ class Mdl_catalogo extends CI_MODEL
     {
         $id =$parametros['cid'];
         $campos= array(
-            'producto'=> $parametros['cproducto'],
+            'nombre_producto'=> $parametros['cnombre_productonombre_p'],
             'stock'=> $parametros['cstock'],
             'precio'=> $parametros['cprecio']
         );
@@ -45,7 +45,7 @@ class Mdl_catalogo extends CI_MODEL
     {
 
         $consulta="Select * from producto where 
-                    producto like '%" .$parametros['cproducto']."%' and 
+        nombre_producto like '%" .$parametros['cnombre_producto']."%' and 
                     stock like '%" .$parametros['cstock']."%' and
                     precio like '%" .$parametros['cprecio']."%';";
         $resultado= $this->db->query($consulta);

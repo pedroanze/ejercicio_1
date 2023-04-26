@@ -20,11 +20,11 @@ class Ctrl_catalogo extends CI_Controller {
 	
 	public function guardar()
 	{
-		$producto=$this->input->post('vproducto');
+		$nombre_producto=$this->input->post('vnombre_producto');
 		$stock=$this->input->post('vstock');
 		$precio=$this->input->post('vprecio');
 
-		$parametros['cproducto']=$producto;
+		$parametros['cnombre_producto']=$nombre_producto;
 		$parametros['cstock']=$stock;
 		$parametros['cprecio']=$precio;
 
@@ -37,12 +37,12 @@ class Ctrl_catalogo extends CI_Controller {
 	public function modificar()
 	{
 		$id=$this->input->post('vid');
-		$producto=$this->input->post('vproducto');
+		$nombre_producto=$this->input->post('vnombre_producto');
 		$stock=$this->input->post('vstock');
 		$precio=$this->input->post('vprecio');
 
 		$parametros['cid']=$id;	
-		$parametros['cproducto']=$producto;
+		$parametros['cnombre_producto']=$nombre_producto;
 		$parametros['cstock']=$stock;
 		$parametros['cprecio']=$precio;
 
@@ -70,11 +70,11 @@ class Ctrl_catalogo extends CI_Controller {
 	}
 
 	public function obtener_productos_by(){
-		$producto=$this->input->post('vproducto');
+		$nombre_producto=$this->input->post('vnombre_producto');
 		$stock=$this->input->post('vstock');
 		$precio=$this->input->post('vprecio');
 
-		$parametros['cproducto']=$producto;
+		$parametros['cnombre_producto']=$nombre_producto;
 		$parametros['cstock']=$stock;
 		$parametros['cprecio']=$precio;
 		$this->Mdl_catalogo->obtener_producto_by($parametros);
