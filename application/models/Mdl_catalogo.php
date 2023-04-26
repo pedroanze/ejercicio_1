@@ -22,7 +22,7 @@ class Mdl_catalogo extends CI_MODEL
     {
         $id =$parametros['cid'];
         $campos= array(
-            'nombre_producto'=> $parametros['cnombre_productonombre_p'],
+            'nombre_producto'=> $parametros['cnombre_producto'],
             'stock'=> $parametros['cstock'],
             'precio'=> $parametros['cprecio']
         );
@@ -45,7 +45,7 @@ class Mdl_catalogo extends CI_MODEL
     {
 
         $consulta="Select * from producto where 
-        nombre_producto like '%" .$parametros['cnombre_producto']."%' and 
+                    nombre_producto like '%" .$parametros['cnombre_producto']."%' and 
                     stock like '%" .$parametros['cstock']."%' and
                     precio like '%" .$parametros['cprecio']."%';";
         $resultado= $this->db->query($consulta);

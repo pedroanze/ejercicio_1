@@ -1,59 +1,12 @@
+<h1>Nuestros Productos</h1>
+
+<input type="text" class="form-control" id = "myInput" placeholder = "buscar">
+
+<div class="container" id="tabla_productos">
+</div>
 <script type="text/javascript">
 listar_productos();
 
-function guardar(){
-  if($("#txb_id").val()==""){
-    $.ajax({
-    method:"POST",
-    url:"<?php echo site_url("Ctrl_catalogo/guardar");?>",
-    data:{
-      vnombre_producto :$("#txb_nombre_producto").val(),
-      vstock :$("#txb_stock").val(),
-      vprecio :$("#txb_precio").val()
-    },
-    success: function(){
-      limpiar_campos();
-    },
-
-});
-  }else{
-    $.ajax({
-    method:"POST",
-    url:"<?php echo site_url("Ctrl_catalogo/modificar");?>",
-    data:{
-      vid :$("#txb_id").val(),
-      vnombre_producto :$("#txb_nombre_producto").val(),
-      vstock :$("#txb_stock").val(),
-      vprecio :$("#txb_precio").val()
-    },
-    success: function(){
-      limpiar_campos();
-      listar_productos();
-    },
-
-});
-  }
-
-
-}
-
-
-
-function limpiar_campos(){
-  $("#txb_nombre_producto").val("");
-  $("#txb_stock").val("");
-  $("#txb_precio").val("");
-  $("#txb_id").val("");
-
-}
-
-
-function editar(id,nombre_producto,stock,precio){
-  $("#txb_id").val(id);
-  $("#txb_nombre_producto").val(nombre_producto);
-  $("#txb_stock").val(stock);
-  $("#txb_precio").val(precio);
-}
 
 
 function listar_productos(){
@@ -101,7 +54,6 @@ function crear_tabla_productos(productos){
       tabla_dinamica+="<th>nombre_producto</th>";
       tabla_dinamica+="<th>Stock de productos</th>";
       tabla_dinamica+="<th>Precio</th>";
-      tabla_dinamica+="<th>Acciones</th>";
       tabla_dinamica+="</tr>";
       tabla_dinamica+="<tbody id='myTable'>";
       
@@ -113,10 +65,6 @@ function crear_tabla_productos(productos){
         tabla_dinamica+="<td>"+productos[i].nombre_producto+"</td>";
         tabla_dinamica+="<td>"+productos[i].stock+"</td>";
         tabla_dinamica+="<td>"+productos[i].precio+"</td>";
-        tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"eliminar('" +productos[i].id+ "')\">Eliminar</button>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"editar('" +productos[i].id+"','"+productos[i].nombre_producto +"','"+productos[i].stock +"','"+productos[i].precio +"')\">editar</button>";
-        tabla_dinamica+="</td>";
         tabla_dinamica+="</tr>";
       }
       tabla_dinamica+="</tbody>";
@@ -130,22 +78,7 @@ function crear_tabla_productos(productos){
     }
 }
 
-function eliminar(id){
-  $.ajax({
-    method:"POST",
-    url:"<?php echo site_url("Ctrl_catalogo/eliminar");?>",
-    data:{
-      vid :id
-      
-    },
-    success: function(){
-      limpiar_campos();
-      listar_productos();
-    },
 
-});
-
-}
 
 
  $(document).ready(function(){
