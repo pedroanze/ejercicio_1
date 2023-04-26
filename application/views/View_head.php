@@ -113,12 +113,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 <nav class="navbar navbar-expand-sm bg-light">
 
-  <!-- Links -->
-  <ul class="navbar-nav">
-
-    <li class="nav-item">
-      <a class="nav-link" href="<?php echo site_url("Ctrl_despedida/index");?>">Despedida</a>
-    </li>
-  </ul>
-
 </nav>

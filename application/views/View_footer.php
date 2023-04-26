@@ -1,5 +1,5 @@
 <script type="text/javascript">
-listar_personas();
+listar_productos();
 
 function guardar(){
   if($("#txb_id").val()==""){
@@ -7,9 +7,9 @@ function guardar(){
     method:"POST",
     url:"<?php echo site_url("Ctrl_catalogo/guardar");?>",
     data:{
-      vnombre :$("#txb_nombre").val(),
-      vapellidop :$("#txb_apellidoP").val(),
-      vapellidom :$("#txb_apellidoM").val()
+      vproducto :$("#txb_producto").val(),
+      vstock :$("#txb_stock").val(),
+      vprecio :$("#txb_precio").val()
     },
     success: function(){
       limpiar_campos();
@@ -22,13 +22,13 @@ function guardar(){
     url:"<?php echo site_url("Ctrl_catalogo/modificar");?>",
     data:{
       vid :$("#txb_id").val(),
-      vnombre :$("#txb_nombre").val(),
-      vapellidop :$("#txb_apellidoP").val(),
-      vapellidom :$("#txb_apellidoM").val()
+      vproducto :$("#txb_producto").val(),
+      vstock :$("#txb_stock").val(),
+      vprecio :$("#txb_precio").val()
     },
     success: function(){
       limpiar_campos();
-      listar_personas();
+      listar_productos();
     },
 
 });
@@ -40,48 +40,48 @@ function guardar(){
 
 
 function limpiar_campos(){
-  $("#txb_nombre").val("");
-  $("#txb_apellidoP").val("");
-  $("#txb_apellidoM").val("");
+  $("#txb_producto").val("");
+  $("#txb_stock").val("");
+  $("#txb_precio").val("");
   $("#txb_id").val("");
 
 }
 
 
-function editar(id,nombre,apellidop,apellidom){
+function editar(id,producto,stock,precio){
   $("#txb_id").val(id);
-  $("#txb_nombre").val(nombre);
-  $("#txb_apellidoP").val(apellidop);
-  $("#txb_apellidoM").val(apellidom);
+  $("#txb_producto").val(producto);
+  $("#txb_stock").val(stock);
+  $("#txb_precio").val(precio);
 }
 
 
-function listar_personas(){
+function listar_productos(){
   $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_catalogo/obtener_todas_las_personas");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/obtener_todas_las_productos");?>",
     data:{
       
     },
-    success: function(personas){
-      crear_tabla_personas(personas);
+    success: function(productos){
+      crear_tabla_productos(productos);
     },
     dataType:'json'
 });
 
 }
 
-function listar_personas_by(){
+function listar_productos_by(){
   $.ajax({
     method:"POST",
-    url:"<?php echo site_url("Ctrl_catalogo/obtener_personas_by");?>",
+    url:"<?php echo site_url("Ctrl_catalogo/obtener_productos_by");?>",
     data:{
-      vnombre :$("#txb_nombre").val(),
-      vapellidop :$("#txb_apellidoP").val(),
-      vapellidom :$("#txb_apellidoM").val()
+      vproducto :$("#txb_producto").val(),
+      vstock :$("#txb_stock").val(),
+      vprecio :$("#txb_precio").val()
     },
-    success: function(personas){
-      crear_tabla_personas(personas);
+    success: function(productos){
+      crear_tabla_productos(productos);
     },
     dataType:'json'
 });
@@ -89,8 +89,8 @@ function listar_personas_by(){
 }
 
 
-function crear_tabla_personas(personas){
-    if(personas.length >0)
+function crear_tabla_productos(productos){
+    if(productos.length >0)
     {
 
       var tabla_dinamica="<table class='table table-striped'>";
@@ -98,35 +98,35 @@ function crear_tabla_personas(personas){
       
       tabla_dinamica+="<tr>";
       tabla_dinamica+="<th>Id</th>";
-      tabla_dinamica+="<th>Nombres</th>";
-      tabla_dinamica+="<th>Apellido paterno</th>";
-      tabla_dinamica+="<th>Apellido materno</th>";
+      tabla_dinamica+="<th>productos</th>";
+      tabla_dinamica+="<th>stock</th>";
+      tabla_dinamica+="<th>precio</th>";
       tabla_dinamica+="<th>Acciones</th>";
       tabla_dinamica+="</tr>";
       tabla_dinamica+="<tbody id='myTable'>";
       
       var i;
-      for(i=0;i<personas.length;i++)
+      for(i=0;i<productos.length;i++)
       {
         tabla_dinamica+="<tr>";
-        tabla_dinamica+="<td>"+personas[i].id;+"</td>";
-        tabla_dinamica+="<td>"+personas[i].nombres+"</td>";
-        tabla_dinamica+="<td>"+personas[i].apellidop+"</td>";
-        tabla_dinamica+="<td>"+personas[i].apellidom+"</td>";
+        tabla_dinamica+="<td>"+productos[i].id;+"</td>";
+        tabla_dinamica+="<td>"+productos[i].productos+"</td>";
+        tabla_dinamica+="<td>"+productos[i].stock+"</td>";
+        tabla_dinamica+="<td>"+productos[i].precio+"</td>";
         tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"eliminar('" +personas[i].id+ "')\">Eliminar</button>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"editar('" +personas[i].id+"','"+personas[i].nombres +"','"+personas[i].apellidop +"','"+personas[i].apellidom +"')\">editar</button>";
+        tabla_dinamica+="<button class='boton-guardar' onclick=\"eliminar('" +productos[i].id+ "')\">Eliminar</button>";
+        tabla_dinamica+="<button class='boton-guardar' onclick=\"editar('" +productos[i].id+"','"+productos[i].productos +"','"+productos[i].stock +"','"+productos[i].precio +"')\">editar</button>";
         tabla_dinamica+="</td>";
         tabla_dinamica+="</tr>";
       }
       tabla_dinamica+="</tbody>";
       tabla_dinamica+="</table>";
-      $("#tabla_personas").html(tabla_dinamica);
+      $("#tabla_productos").html(tabla_dinamica);
       
     }
     else
     {
-        $("#tabla_personas").html('<div class="alert alert-info"><strong> No hay datos que mostrar<strong></div>');
+        $("#tabla_productos").html('<div class="alert alert-info"><strong> No hay datos que mostrar<strong></div>');
     }
 }
 
@@ -140,7 +140,7 @@ function eliminar(id){
     },
     success: function(){
       limpiar_campos();
-      listar_personas();
+      listar_productos();
     },
 
 });

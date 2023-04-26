@@ -7,55 +7,55 @@ class Mdl_catalogo extends CI_MODEL
         parent ::__construct();
     }    
 
-    function insertar_persona($parametros)
+    function insertar_producto($parametros)
     {
         $campos= array(
-            'nombres'=> $parametros['cnombre'],
-            'apellidop'=> $parametros['capellidop'],
-            'apellidom'=> $parametros['capellidom']
+            'producto'=> $parametros['cproducto'],
+            'stock'=> $parametros['cstock'],
+            'precio'=> $parametros['cprecio']
         );
-        echo $parametros['cnombre'];
-        $this->db->insert('persona',$campos);     
+        echo $parametros['cproducto'];
+        $this->db->insert('producto',$campos);     
     }
 
-    function modificar_persona($parametros)
+    function modificar_producto($parametros)
     {
         $id =$parametros['cid'];
         $campos= array(
-            'nombres'=> $parametros['cnombre'],
-            'apellidop'=> $parametros['capellidop'],
-            'apellidom'=> $parametros['capellidom']
+            'producto'=> $parametros['cproducto'],
+            'stock'=> $parametros['cstock'],
+            'precio'=> $parametros['cprecio']
         );
         
     $this->db->where('id', $id);
 
-    $this->db->update('persona', $campos);
+    $this->db->update('producto', $campos);
 
     }
 
 
-    function obtener_persona_all()
+    function obtener_producto_all()
     {
-        $consulta="Select * from persona;";
+        $consulta="Select * from producto;";
         $resultado= $this->db->query($consulta);
         return $resultado->result_array();
     }
 
-    function obtener_persona_by($parametros)
+    function obtener_producto_by($parametros)
     {
 
-        $consulta="Select * from persona where 
-                    nombres like '%" .$parametros['cnombre']."%' and 
-                    apellidop like '%" .$parametros['capellidop']."%' and
-                    apellidom like '%" .$parametros['capellidom']."%';";
+        $consulta="Select * from producto where 
+                    producto like '%" .$parametros['cproducto']."%' and 
+                    stock like '%" .$parametros['cstock']."%' and
+                    precio like '%" .$parametros['cprecio']."%';";
         $resultado= $this->db->query($consulta);
         return $resultado->result_array();
     }
 
-    function eliminar_persona($id)
+    function eliminar_producto($id)
     {
         
-        $consulta="Delete from persona where id= '".$id."';" ;
+        $consulta="Delete from producto where id= '".$id."';" ;
         $this->db->query($consulta);
         
     }

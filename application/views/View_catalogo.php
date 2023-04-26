@@ -1,17 +1,19 @@
+<h1>Catalogo</h1>
+
 <div class="container">
 <input type="hidden" class="form-control" id="txb_id">
 <form>
     <div class="form-group">
-      <label for="txb_nombre">Producto:</label>
-      <input type="text" class="form-control" id="txb_nombre">
+      <label for="txb_producto">Producto:</label>
+      <input type="text" class="form-control" id="txb_producto">
     </div>
     <div class="form-group">
-      <label for="txb_apellidoP">Stock:</label>
-      <input type="number" class="form-control" id="txb_apellidoP">
+      <label for="txb_stock">Stock:</label>
+      <input type="number" class="form-control" id="txb_stock">
     </div>
     <div class="form-group">
-      <label for="txb_apellidoM">Precio:</label>
-      <input type="number" class="form-control" id="txb_apellidoM">
+      <label for="txb_presio">Precio:</label>
+      <input type="number" class="form-control" id="txb_presio">
     </div>
     <div class= "container-guardar-buscar">
       <button class="button-guardar-secundary" onclick="guardar()">Guardar <i class="fas fa-solid fa-floppy-disk"></i> </button>
@@ -24,7 +26,7 @@
 
 
 
-<div class="container" id="tabla_personas">
+<div class="container" id="tabla_productos">
 </div>
 
 
