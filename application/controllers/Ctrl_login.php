@@ -13,7 +13,6 @@ class Ctrl_login extends CI_Controller {
   
   public function index()
   {
-	  $this->load->view('View_head');
 	  $this->load->view('View_login');
 	  
   }

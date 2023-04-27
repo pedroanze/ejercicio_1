@@ -1,6 +1,6 @@
 <h1>Nuestros Productos</h1>
 
-<input type="text" class="form-control" id = "myInput" placeholder = "buscar">
+<input type="text" class="form-control" id = "myInput" placeholder = "buscar articulo">
 
 <div class="container" id="tabla_productos">
 </div>

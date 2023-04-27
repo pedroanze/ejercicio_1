@@ -89,46 +89,55 @@ function listar_productos_by(){
 }
 
 
-function crear_tabla_productos(productos){
-    if(productos.length >0)
-    {
+function crear_tabla_productos(productos) {
+  if (productos.length > 0) {
+    var tabla_dinamica = "<table class='table table-striped'>";
+    tabla_dinamica += "";
 
-      var tabla_dinamica="<table class='table table-striped'>";
-      tabla_dinamica+="";
-      
-      tabla_dinamica+="<tr>";
-      tabla_dinamica+="<th>Id</th>";
-      tabla_dinamica+="<th>nombre_producto</th>";
-      tabla_dinamica+="<th>Stock de productos</th>";
-      tabla_dinamica+="<th>Precio</th>";
-      tabla_dinamica+="<th>Acciones</th>";
-      tabla_dinamica+="</tr>";
-      tabla_dinamica+="<tbody id='myTable'>";
-      
-      var i;
-      for(i=0;i<productos.length;i++)
-      {
-        tabla_dinamica+="<tr>";
-        tabla_dinamica+="<td>"+productos[i].id;+"</td>";
-        tabla_dinamica+="<td>"+productos[i].nombre_producto+"</td>";
-        tabla_dinamica+="<td>"+productos[i].stock+"</td>";
-        tabla_dinamica+="<td>"+productos[i].precio+"</td>";
-        tabla_dinamica+="<td>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"eliminar('" +productos[i].id+ "')\">Eliminar</button>";
-        tabla_dinamica+="<button class='boton-guardar' onclick=\"editar('" +productos[i].id+"','"+productos[i].nombre_producto +"','"+productos[i].stock +"','"+productos[i].precio +"')\">editar</button>";
-        tabla_dinamica+="</td>";
-        tabla_dinamica+="</tr>";
-      }
-      tabla_dinamica+="</tbody>";
-      tabla_dinamica+="</table>";
-      $("#tabla_productos").html(tabla_dinamica);
-      
+    tabla_dinamica += "<tr>";
+    tabla_dinamica += "<th>Id</th>";
+    tabla_dinamica += "<th>Nombre Producto</th>";
+    tabla_dinamica += "<th>Stock de Productos</th>";
+    tabla_dinamica += "<th>Precio</th>";
+    tabla_dinamica += "<th>Acciones</th>";
+    tabla_dinamica += "</tr>";
+    tabla_dinamica += "<tbody id='myTable'>";
+
+    var i;
+    for (i = 0; i < productos.length; i++) {
+      tabla_dinamica += "<tr>";
+      tabla_dinamica += "<td>" + productos[i].id + "</td>";
+      tabla_dinamica += "<td>" + productos[i].nombre_producto + "</td>";
+      tabla_dinamica += "<td>" + productos[i].stock + "</td>";
+      tabla_dinamica += "<td>" + productos[i].precio + "</td>";
+      tabla_dinamica += "<td>";
+      tabla_dinamica +=
+        "<button class='boton-eliminar' onclick=\"eliminar('" +
+        productos[i].id +
+        "')\">Eliminar</button>";
+      tabla_dinamica +=
+        "<button class='boton-editar' onclick=\"editar('" +
+        productos[i].id +
+        "','" +
+        productos[i].nombre_producto +
+        "','" +
+        productos[i].stock +
+        "','" +
+        productos[i].precio +
+        "')\">Editar</button>";
+      tabla_dinamica += "</td>";
+      tabla_dinamica += "</tr>";
     }
-    else
-    {
-        $("#tabla_productos").html('<div class="alert alert-info"><strong> No hay datos que mostrar<strong></div>');
-    }
+    tabla_dinamica += "</tbody>";
+    tabla_dinamica += "</table>";
+    $("#tabla_productos").html(tabla_dinamica);
+  } else {
+    $("#tabla_productos").html(
+      '<div class="alert alert-info"><strong>No hay datos que mostrar</strong></div>'
+    );
+  }
 }
+
 
 function eliminar(id){
   $.ajax({
@@ -164,7 +173,11 @@ function eliminar(id){
 </script>
 
 <footer>
+  <div class="container">
+    <p>Desarrollado por Pedro Anze y Matias Ramirez</p>
+  </div>
 </footer>
+
 </body>
 
 
